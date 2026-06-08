@@ -32,7 +32,8 @@ Data Analyst SQL
     ON	products.product_id = orders.product_id
     GROUP by customers.name
     ORDER BY 'Total Purchase' DESC limit 5;
-<img width="982" height="1217" alt="image" src="https://github.com/villydger/Excel-Pivot/blob/main/Product%20Sales%20Dashboard.jpg" />
+<img width="982" height="1217" alt="image" src="https://github.com/villydger/Data-Analyst-SQL
+/blob/main/Identify the products that exist in our catalog.jpg" />
  
 
 
