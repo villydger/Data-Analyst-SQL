@@ -1,0 +1,45 @@
+Data Analyst SQL
+
+---Calculate the total orders, total revenue and its average order value of each product category.
+
+SELECT products.category,
+COUNT(orders.order_id) as 'Total_Orders',
+SUM(orders.quantity * products.price) AS 'Total Revenue',
+AVG(orders.quantity * products.price) AS 'Avg_Order_value'
+FROM orders
+INNER JOIN products
+On products.product_id = orders.product_id
+GROUP BY products.category
+ORDER BY 'Total Revenue' DESC;
+
+---Identify the registered customers, and how much have they spend, including those who haven’t purchased yet
+
+SELECT customers.name , orders.quantity, products.price	
+from customers
+LEFT JOIN orders
+on customers.customer_id = orders.customer_id
+LEFT JOIN products
+on products.product_id = orders.product_id
+
+
+---Identify the products that exist in our catalog, and how many units of each were sold including those with zero sales.
+
+SELECT  products.product_name,products.category, orders.quantity,  products.price
+FROM orders
+RIGHT JOIN products
+on products.product_id = orders.product_id
+
+
+---The top 5 customers with the highest total purchases
+
+SELECT customers.name, sum(products.price * orders.quantity) as 'Total Purchase'
+from customers
+LEFT JOIN orders
+ON customers.customer_id = orders.customer_id
+LEFT JOIN products
+ON	products.product_id = orders.product_id
+GROUP by customers.name
+ORDER BY 'Total Purchase' DESC limit 5;
+ 
+
+
